@@ -1,0 +1,44 @@
+<form>
+    <div>
+        <label for="name">Name</label>
+        <input required name="name" type="text" />
+    </div>
+    <div>
+        <label for="email" >E-mail</label>
+        <input name="email" type="email" required/>
+    </div>
+    <div>
+        <label for="password">Password</label>
+        <input name="password" type="text">
+    </div>
+    <div>
+        <label for="gender">Hobies</label>
+        <input type="radio">
+        <label>Male</label>
+        <input type="radio">
+        <label>Female</label>
+    </div>
+    <div>
+        <label for="dateOfBirth">Birthdate</label>
+        <input name="dateOfBirth" type="date" min="1967-01-01">
+    </div>
+    <div>
+        <label for="file">Photo</label>
+        <input name="file" type="file" accept=".doc">
+    </div>
+    <div>
+        <label for="hobbies">Hobies</label>
+        <select>
+            <option *ngFor="let hobbie from hobbies" [value]="hobbie">{{hobbie}}></option>
+        </select>
+    </div>
+    <div>
+        <label for="words">Some words</label>
+        <textarea rows="5" cols="100" maxlength="1"></textarea>
+    </div>
+    <div>
+        <input type="checkbox">
+        <label>Agreement</label>
+    </div>
+    <button type="submit">Submit</button>
+</form>
