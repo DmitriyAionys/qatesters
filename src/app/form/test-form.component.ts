@@ -13,11 +13,15 @@ export class FormComponent implements OnInit {
   profileForm = this.formBuilder.group({
     firstName: ['', [
       Validators.required,
-      Validators.pattern("[A-Za-z]{2,20}")
+      Validators.pattern("^[A-Z][a-z]*(([,.] |[ '-])[A-Za-z][a-z]*)*(\.?)$")
     ]],
     lastName: ['', [
       Validators.required,
-      Validators.pattern("[A-Za-z]{2,20}")
+      Validators.pattern("^[A-Z][a-z]*(([,.] |[ '-])[A-Za-z][a-z]*)*(\.?)$")
+    ]],
+    email:['',[
+      Validators.required,
+      Validators.email
     ]],
     password: ['', [
       Validators.required,
@@ -54,6 +58,10 @@ export class FormComponent implements OnInit {
 
   get lastName() {
     return this.profileForm.get("lastName");
+  }
+  
+  get email() {
+    return this.profileForm.get("email");
   }
 
   get password() {
