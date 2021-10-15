@@ -1,4 +1,5 @@
 <form [formGroup]="profileForm" class="form-container">
+
   <mat-card>
     <mat-card-header>
       <mat-card-title>Profile Information</mat-card-title>
@@ -6,7 +7,8 @@
     <mat-card-content>
       <div class="col-md-12">
         <mat-form-field class="full-width">
-          <input formControlName="firstName" matInput required placeholder="First name">
+          <input formControlName="firstName" matInput required
+            placeholder="First name">
           <mat-error *ngIf="firstName!.invalid && firstName!.touched">
             Please enter your real name
           </mat-error>
@@ -14,7 +16,8 @@
       </div>
       <div class="col-md-12">
         <mat-form-field class="full-width">
-          <input formControlName="lastName" matInput required placeholder="Last name">
+          <input formControlName="lastName" matInput required
+            placeholder="Last name">
           <mat-error *ngIf="lastName!.invalid && lastName!.touched">
             Please enter your real surname
           </mat-error>
@@ -30,9 +33,11 @@
       </div>
       <div class="col-md-12">
         <mat-form-field class="full-width">
-          <input formControlName="password" matInput required placeholder="Password">
+          <input formControlName="password" matInput required
+            placeholder="Password">
           <mat-hint>
-            Must have minimum 6 and maximum 20 characters, at least one uppercase letter, one lowercase letter, one number and one special character
+            Must have minimum 6 and maximum 20 characters, at least one uppercase letter, one lowercase letter, one
+            number and one special character
           </mat-hint>
           <mat-error *ngIf="password!.invalid && password!.touched">
             Cawabanga
@@ -42,7 +47,8 @@
       <div class="col-md-12 top-padding">
         <mat-form-field class="full-width" color="accent" appearance="fill">
           <mat-label>Birthdate</mat-label>
-          <input formControlName="dob" matInput [matDatepicker]="picker" min="1968-01-01" max="2145-01-01"> 
+          <input formControlName="dob" matInput [matDatepicker]="picker" min="1968-01-01"
+            max="2145-01-01">
           <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
           <mat-datepicker #picker></mat-datepicker>
         </mat-form-field>
@@ -56,7 +62,8 @@
       </div>
       <div class="col-sm-12">
         <mat-form-field class="full-width">
-          <textarea formControlName="words" matInput placeholder="Some words" maxlength="1"></textarea>
+          <textarea formControlName="words" matInput placeholder="Some words"
+            maxlength="1"></textarea>
         </mat-form-field>
       </div>
       <div class="col-sm-12">

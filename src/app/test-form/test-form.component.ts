@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, Validators } from '@angular/forms';
+import {MatDialog, MatDialogConfig} from '@angular/material/dialog';
+import { HomePageComponent } from '../home-page/home-page.component';
+import { Profile } from '../profile';
 
 @Component({
   selector: 'test-form',
@@ -8,7 +11,8 @@ import { FormBuilder, FormControl, Validators } from '@angular/forms';
 })
 export class FormComponent implements OnInit {
 
-  constructor(private formBuilder: FormBuilder) { }
+  constructor(private formBuilder: FormBuilder,
+    private dialog: MatDialog) { }
 
   profileForm = this.formBuilder.group({
     firstName: ['', [
@@ -19,7 +23,7 @@ export class FormComponent implements OnInit {
       Validators.required,
       Validators.pattern("^[A-Z][a-z]*(([,.] |[ '-])[A-Za-z][a-z]*)*(\.?)$")
     ]],
-    email:['',[
+    email: ['', [
       Validators.required,
       Validators.email
     ]],
@@ -30,7 +34,8 @@ export class FormComponent implements OnInit {
     dob: [''],
     gender: [''],
     hobbies: [''],
-    words: ['']
+    words: [''],
+    agreement:['']
   });
 
   hobbies = new FormControl();
@@ -44,7 +49,7 @@ export class FormComponent implements OnInit {
     "Swimming"
   ]
 
-  ngOnInit(){
+  ngOnInit() {
 
   }
 
@@ -59,7 +64,7 @@ export class FormComponent implements OnInit {
   get lastName() {
     return this.profileForm.get("lastName");
   }
-  
+
   get email() {
     return this.profileForm.get("email");
   }
