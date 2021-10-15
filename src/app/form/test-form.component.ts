@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormControl, Validators } from '@angular/forms';
 
 @Component({
   selector: 'test-form',
@@ -7,10 +8,56 @@ import { Component, OnInit } from '@angular/core';
 })
 export class FormComponent implements OnInit {
 
-  constructor() { }
+  constructor(private formBuilder: FormBuilder) { }
 
-  hobbies = ['Music', 'Cooking', 'Photography', 'Movies', 'Swimming']
-  ngOnInit(): void {
+  profileForm = this.formBuilder.group({
+    firstName: ['', [
+      Validators.required,
+      Validators.pattern("[A-Za-z]{2,20}")
+    ]],
+    lastName: ['', [
+      Validators.required,
+      Validators.pattern("[A-Za-z]{2,20}")
+    ]],
+    password: ['', [
+      Validators.required,
+      Validators.pattern("^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{6,20}$")
+    ]],
+    dob: [''],
+    gender: [''],
+    hobbies: [''],
+    words: ['']
+  });
+
+  hobbies = new FormControl();
+
+  hobbieList: string[] = [
+    "Music",
+    "Photography",
+    "Singing",
+    "Drawing",
+    "Cooking",
+    "Swimming"
+  ]
+
+  ngOnInit(){
+
+  }
+
+  onSubmit() {
+    console.log('form data is ', this.profileForm.value);
+  }
+
+  get firstName() {
+    return this.profileForm.get("firstName");
+  }
+
+  get lastName() {
+    return this.profileForm.get("lastName");
+  }
+
+  get password() {
+    return this.profileForm.get("password");
   }
 
 }
