@@ -198,3 +198,19 @@ body {
   font-family: Roboto, "Helvetica Neue", sans-serif;
 }
 
+input[type=file]::file-selector-button {
+  border: 2px solid #f565a1;
+  padding: .2em .4em;
+  border-radius: .2em;
+  background-color: #ff60b8;
+  transition: 0.3s;
+}
+
+input[type=file]::file-selector-button:hover {
+  background-color: #ff71c9;
+  border: 2px solid #ff84d6;
+  color: white;
+}
+
+/* Importing Bootstrap SCSS file. */
+@import '~bootstrap/scss/bootstrap';

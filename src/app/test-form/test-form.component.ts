@@ -1,8 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, Validators } from '@angular/forms';
-import {MatDialog, MatDialogConfig} from '@angular/material/dialog';
-import { HomePageComponent } from '../home-page/home-page.component';
-import { Profile } from '../profile';
+import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'test-form',
@@ -12,7 +11,8 @@ import { Profile } from '../profile';
 export class FormComponent implements OnInit {
 
   constructor(private formBuilder: FormBuilder,
-    private dialog: MatDialog) { }
+    private dialog: MatDialog,
+    private http: HttpClient) { }
 
   profileForm = this.formBuilder.group({
     firstName: ['', [
@@ -29,13 +29,14 @@ export class FormComponent implements OnInit {
     ]],
     password: ['', [
       Validators.required,
-      Validators.pattern("^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{6,20}$")
+      Validators.pattern("^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,19}$")
     ]],
     dob: [''],
     gender: [''],
     hobbies: [''],
-    words: [''],
-    agreement:['']
+    words: ['',
+      Validators.pattern("^[0-9]*$")],
+    agreement: ['']
   });
 
   hobbies = new FormControl();
@@ -50,11 +51,20 @@ export class FormComponent implements OnInit {
   ]
 
   ngOnInit() {
-
+    this.http.get<any>('http://httpstat.us/404').subscribe(data => {
+      this.profileForm = data.total;
+    })
   }
 
   onSubmit() {
     console.log('form data is ', this.profileForm.value);
+
+  }
+
+  onFileSelected(){
+    this.http.get<any>('http://httpstat.us/500').subscribe(data => {
+      this.profileForm = data.total;
+    })
   }
 
   get firstName() {
@@ -73,4 +83,7 @@ export class FormComponent implements OnInit {
     return this.profileForm.get("password");
   }
 
+  get words() {
+    return this.profileForm.get("words");
+  }
 }
