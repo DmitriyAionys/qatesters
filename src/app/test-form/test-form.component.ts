@@ -61,7 +61,7 @@ export class FormComponent implements OnInit {
 
   }
 
-  onFileSelected(){
+  onFileSelected() {
     this.http.get<any>('http://httpstat.us/500').subscribe(data => {
       this.profileForm = data.total;
     })
