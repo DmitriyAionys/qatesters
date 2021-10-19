@@ -4,7 +4,8 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
-    "build": "ng build",
+    "build": "ng build --prod --aot",
+    "deploy": "ng build --prod --aot & firebase deploy",
     "watch": "ng build --watch --configuration development",
     "test": "ng test"
   },
@@ -23,6 +24,7 @@
     "@angular/router": "~12.2.0",
     "@ng-bootstrap/ng-bootstrap": "^10.0.0",
     "bootstrap": "^4.6.0",
+    "firebase": "^9.1.3",
     "jquery": "^3.6.0",
     "popper.js": "^1.16.1",
     "rxjs": "~6.6.0",
